@@ -1,0 +1,82 @@
+# Conky Google Now style #
+
+# Conky settings #
+short_units yes
+background no
+update_interval 1
+double_buffer yes
+no_buffers yes
+
+# Window specifications #
+own_window_class conky_with_shadow
+own_window yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_title 
+own_window_colour 2D2D2D
+
+maximum_width 325
+minimum_size 325
+
+# Alignment #
+alignment tr
+gap_x 100
+gap_y 100
+
+border_inner_margin 15
+border_outer_margin 0
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftalpha 0
+xftfont Open Sans Light:size=10
+
+override_utf8_locale yes
+
+imlib_cache_size 0
+
+# Color scheme #
+default_color DCDCDC
+
+# cyan #
+color1 0099CC 
+# purple #
+color2 9933CC
+# green #
+color3 669900
+# orange #
+color4 FF8800
+# red #
+color5 FF302E
+# grey #
+color6 AAAAAA
+# dark grey #
+color7 484848
+# yellow #
+color8 FFEB0A
+
+# Loading lua script for drawning rings
+lua_load ./lua/bargraph.lua
+lua_draw_hook_post conky_main_bars
+
+TEXT
+# Memory #
+${font Open Sans Light:size=15}Virtual memory${font}
+${image ./img/ram3.png -p 0,42 -s 25x25}
+${offset 245}${mem}/${memmax}
+${image ./img/rom.png -p 0,72 -s 25x25}
+${voffset -28}
+${color4}${offset 245}${swap}/${swapmax}
+${voffset -5}
+# Showing memory part with TOP 5 #
+${color5}${top_mem name 1}${alignr}${top_mem mem_res 1}${top_mem mem 1}%
+${color8}${top_mem name 2}${alignr}${top_mem mem_res 2}${top_mem mem 2}%
+${color3}${top_mem name 3}${alignr}${top_mem mem_res 3}${top_mem mem 3}%
+${color6}${top_mem name 4}${alignr}${top_mem mem_res 4}${top_mem mem 4}%
+${color6}${top_mem name 5}${alignr}${top_mem mem_res 5}${top_mem mem 5}%
